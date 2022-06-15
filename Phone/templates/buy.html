@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h2></h2>
+<form method = 'PHONE'>
+  <fieldset>
+    <legend>Personal information:</legend>
+    First name:<br>
+    <input type="text" name="firstname">
+    <br>
+    Last name:<br>
+    <input type="text" name="lastname">
+    <br><br>
+    Address:<br>
+    <label>Street</label><input type="text" street="text">
+    <label>Home</label><input type="number" home="number">
+    <label>Flat</label><input type="number" flat="number">
+    <br><br>
+    Post index:<br>
+     <input type="number" post_index="number">
+    <br><br> 
+    Card:<br>
+    <label>Number</label><input type="number" card_number="number" required pattern="(^\d{4}([-]|)\d{4}([-]|)\d{4}([-]|)\d{4})$">
+    <label>Date</label><input type="date" card_date="date" max="YY-MM"> 
+    <label>CVV</label><input type="number" CVV="number">
+    <br><br>
+    E-mail:
+    <input type="email" name="email" required pattern="^([\w!#%&'*\+\-\/=?^`{|}~])+\.?(?1)+[a-zA-Z0-9][a-zA-Z0-9-]{1,61}[a-zA-Z0-9]|[a-zA-Z0-9]{1,63})\.(?2)$">
+    <br><br>
+    <input href="#" type="submit" value="Submit">
+  </fieldset>
+</form>
+</div>    
+  {% endblock %}      
