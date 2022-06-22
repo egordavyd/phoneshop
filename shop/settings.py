@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Phone',
+    'accounts',
 ]
 
 MIDDLEWARE = [
@@ -118,8 +119,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
-LOGIN_REDIRECT_URL ='/catalog'
-LOGOUT_REDIRECT_URL ='/catalog'
+LOGIN_REDIRECT_URL ='/phone/catalog'
+LOGOUT_REDIRECT_URL ='/phone/catalog'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # Default primary key field type
