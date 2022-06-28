@@ -1,7 +1,10 @@
+from audioop import reverse
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from .models import Phone
 from accounts.forms import UserRegistrationForm
-
+from .models import Buy
+from django import forms
 
 def index(request):
     visits = request.session.get('visits',0)
@@ -17,7 +20,16 @@ def phone(request, phone_id):
 
 def buy_phone(request, phone_id):
     phone = Phone.objects.get(id = phone_id)
-    return render(request, 'buy.html', {'phone':phone})
+    if request.method == "POST":
+        buy_form = Buy(request.POST)
+        if buy_form.is_valid():
+            new_transaction = buy_form.save(commit=False)
+            new_transaction.save()
+            phone.amount -= 1
+            phone.save()
+            return HttpResponseRedirect(reverse('index'))
+        return render(request, 'buy.html', {'phone':phone, 'buy_form': buy_form})
+    return render(request, 'buy.html', {'phone':phone, 'buy_form': Buy()})
 
 def register(request):
     if request.method == "POST":

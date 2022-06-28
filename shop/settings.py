@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'Phone',
     'accounts',
+    'cart',
 ]
 
 MIDDLEWARE = [
@@ -122,6 +123,10 @@ STATIC_URL = 'static/'
 LOGIN_REDIRECT_URL ='/phone/catalog'
 LOGOUT_REDIRECT_URL ='/phone/catalog'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+CART_SESSION_ID = 'cart'
+
+MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field

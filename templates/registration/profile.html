@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<h1> Edit your profile </h1>
+
+<form method="POST", action="">
+
+{% csrf_token %}
+
+{{ user_form.as_p }}
+{{ profile_form.as_p}}
+
+<p><button type="submit" class="btn btn-primary">Edit profile</button></p>
+
+
+</form>
+
+
+
+{%endblock content %}

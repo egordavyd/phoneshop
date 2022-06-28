@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from django import forms 
+from .models import Profile
 
 
 class UserRegistrationForm(forms.ModelForm):
@@ -15,8 +16,20 @@ class UserRegistrationForm(forms.ModelForm):
         model = User
         fields = ('username', 'email', 'first_name', 'last_name', 'password')
 
-    def password_validation(self):
+    def clean_password2(self):
         data = self.cleaned_data
-        if data['password1'] != data['password2']:
+        if data['password'] != data['password2']:
             raise forms.ValidationError("Passwords didn't match!")
         return data['password2']
+
+class UserForm(forms.ModelForm):
+    class Meta():
+        model = User
+        fields = ('first_name', 'last_name')
+
+
+
+class ProfileForm(forms.ModelForm):
+    class Meta():
+        model = Profile
+        fields = ('photo', 'date_of_birth')

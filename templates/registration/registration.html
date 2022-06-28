@@ -5,7 +5,7 @@
 {% if form.errors %}
     <div class="alert alert-danger alert-dismissible">
         <button type="button" class="close" data-dismiss="alert"></button>
-        <strong>Error!</strong> Incorrent username or password! Try again!
+        <strong>Error!</strong>{{form.errors}}
     </div>
 {% endif %}    
 
@@ -36,7 +36,7 @@
     <label for="pwd">Repeat your password:</label>
     <input type = "password" name = "password2">
 </div>
-  <input type="password" class="form-control" id="pwd1" name="password" value="{{ generate_password }}"/>
+  <input type="password" class="form-control" id="pwd1" name="password1" value="{{ generate_password }}"/>
   <button type="submit" class="btn btn-primary">Submit</button>
   <button type="submit" class="btn btn-primary" formaction="{% url 'register2' %}">Generate password</button>
 </form>
