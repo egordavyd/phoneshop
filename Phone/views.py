@@ -5,17 +5,21 @@ from .models import Phone
 from accounts.forms import UserRegistrationForm
 from .models import Buy
 from django import forms
+from cart.cart import Cart
 
 def index(request):
+    cart = Cart(request)
     visits = request.session.get('visits',0)
     request.session['visits'] = visits + 1
     print(visits)
     phone_amount = Phone.objects.count()
     phone = Phone.objects.all()
-    return render(request, 'phones/index.html', {'phones' : phone, 'phone_amount' : phone_amount, 'visits' : visits})
+    return render(request, 'phones/index.html', {'phones' : phone, 'phone_amount' : phone_amount, 'visits' : visits, 'cart': cart})
 
 def phone(request, phone_id):
+    cart = Cart(request)
     phone = Phone.objects.get(id = phone_id)
+    cart.add(phone,1)
     return render(request, 'phone.html', {'phone' : phone})
 
 def buy_phone(request, phone_id):

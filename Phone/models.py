@@ -20,6 +20,13 @@ class Phone(models.Model):
     def buy(self):
         return reverse('buy', args = [str(self.id)]) 
 
+    def add_to_cart(self):
+        return reverse("add",  args = [str(self.id)])      
+
+    
+    def delete(self):
+        return reverse("delete",  args = [str(self.id)])     
+
 class Buy (models.Model):
     user = models.OneToOneField(User, on_delete=models.SET_NULL, null=True)  
     name = models.CharField(max_length=100, default='text')

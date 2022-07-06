@@ -6,4 +6,5 @@ urlpatterns = [
     path('phone/', include('Phone.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
     path('register/', include('accounts.urls')),
+    path('cart/', include('cart.urls')),
 ]
