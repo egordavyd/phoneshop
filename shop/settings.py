@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'Phone',
     'accounts',
     'cart',
+    'PhoneStoreAPI',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [

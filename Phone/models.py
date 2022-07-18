@@ -9,7 +9,10 @@ class Phone(models.Model):
     model = models.TextField(help_text="Enter short description")
     system = models.CharField(max_length=100, default='text')
     memory = models.FloatField()
+    amount = models.IntegerField(default=0)
     price = models.FloatField()
+    picture = models.ImageField(blank=True)
+
 
     def __str__(self):
         return self.name
@@ -23,9 +26,13 @@ class Phone(models.Model):
     def add_to_cart(self):
         return reverse("add",  args = [str(self.id)])      
 
-    
     def delete(self):
-        return reverse("delete",  args = [str(self.id)])     
+        return reverse("delete",  args = [str(self.id)])   
+
+    def picture_url(self):
+        if self.picture:
+            return self.picture.url
+
 
 class Buy (models.Model):
     user = models.OneToOneField(User, on_delete=models.SET_NULL, null=True)  

@@ -28,7 +28,7 @@ def register2(request):
 def profile(request):
     if request.method == 'POST':
         user_form = UserForm(instance=request.user, data=request.POST)
-        profile_form = ProfileForm(instance=request.user.profile, data=request.POST)
+        profile_form = ProfileForm(instance=request.user.profile, data=request.POST, files=request.FILES)
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()
@@ -37,5 +37,4 @@ def profile(request):
     profile_form = ProfileForm(instance=request.user.profile)
 
     return render(request, "registration/profile.html", {'user_form': user_form, 'profile_form': profile_form})
-
-    
+     
